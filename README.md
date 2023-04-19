@@ -1,5 +1,3 @@
-# python-IoT-manager
-Text-based IoT manager system simulator
 # Python-based IoT Device Simulator with Monitoring Dashboard
 
 ## Description:
