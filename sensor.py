@@ -11,15 +11,19 @@ class Sensor:
 
     def __init__(self, name):
         self.name = name
+        self.date = datetime.datetime.now().strftime("%H:%M:%S:%M")
+        self.data1 = random.randrange(self.lower_bound, self.upper_bound, self.steps)
+        self.data2 = round(random.SystemRandom().uniform(self.lower_bound, self.upper_bound), self.round)
 
     def __str__(self):
-        sensor_date = datetime.datetime.now().strftime("%H:%M:%S")
-        sensor_data1 = random.randrange(self.lower_bound, self.upper_bound, self.steps)
-        sensor_data2 = round(random.SystemRandom().uniform(self.lower_bound, self.upper_bound), self.round)
+        self.update_sensor_data()
         return "{name}: {date} {data1} {data2}".\
-            format(name=self.name, date=sensor_date, data1=sensor_data1, data2=sensor_data2)
+            format(name=self.name, date=self.date, data1=self.data1, data2=self.data2)
+
+    def update_sensor_data(self):
+        self.date = datetime.datetime.now().strftime("%H:%M:%S:%M")
+        self.data1 = random.randrange(self.lower_bound, self.upper_bound, self.steps)
+        self.data2 = round(random.SystemRandom().uniform(self.lower_bound, self.upper_bound), self.round)
 
 
 sensor = Sensor('tv')
-print(sensor)
-print(sensor)
