@@ -1,6 +1,5 @@
 import random
 import datetime
-import time
 
 
 class Sensor:
