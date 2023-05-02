@@ -1,18 +1,17 @@
-from device import Device
-from dashboard import Dashboard
-
+from device import device
+from dashboard import dashboard
 
 def main():
-    device1 = Device("LG television", "https://central-server.example.com")
-    device2 = Device("Samsung television", "https://central-server.example.com")
-    dashboard = Dashboard()
+    device1 = device.Device("LG television", "https://central-server.example.com")
+    device2 = device.Device("Samsung television", "https://central-server.example.com")
+    dashboard1 = dashboard.Dashboard()
 
-    def simulation(device):
-        device.collect_data(10)
-        processed_data = device.process_data()
-        dashboard.display_raw_data(device.raw_data)
-        dashboard.display_processed_data(processed_data)
-        device.send_data_to_server(processed_data)
+    def simulation(dev):
+        dev.collect_data(10)
+        processed_data = dev.process_data()
+        dashboard1.display_raw_data(dev.raw_data)
+        dashboard1.display_processed_data(processed_data)
+        dev.send_data_to_server(processed_data)
 
     simulation(device1)
     simulation(device2)

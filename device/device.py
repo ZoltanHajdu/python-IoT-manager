@@ -1,6 +1,6 @@
-import Communication
-import data_processor
-import sensor
+from device import sensor
+from device import communication
+from device import data_processor
 
 
 class Device:
@@ -12,7 +12,7 @@ class Device:
             raise ValueError("Server url cannot be empty\n")
 
         self.sensor = sensor.Sensor(device_name)
-        self.communication = Communication.Communication(server_url)
+        self.communication = communication.Communication(server_url)
         self.data_processor = data_processor.DataProcessor(device_name)
         self.raw_data = []
 

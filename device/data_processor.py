@@ -1,5 +1,4 @@
-import sensor
-import time
+from device import sensor
 import statistics
 
 
@@ -16,14 +15,14 @@ class DataProcessor:
         print("median: {median}\nsum: {sum}\nmean: {mean}"
               .format(median=self.median, sum=self.sum, mean=self.mean))
 
-    def collect_sensor_data(self, n):
-        x = 0
-        while x < n:
-            self.sensor_data.append(self.sensor.get_sensor_data())
-            x = x + 1
 
     def analyze_sensor_data(self, raw_data):
-        self.median = statistics.median([x[2] for x in raw_data])
-        self.sum = sum([x[2] for x in raw_data])
-        self.mean = statistics.mean([x[2] for x in raw_data])
-        return [self.median, self.sum, self.mean]
+        try:
+            self.median = statistics.median([x[2] for x in raw_data])
+            self.sum = sum([x[2] for x in raw_data])
+            self.mean = statistics.mean([x[2] for x in raw_data])
+            return [self.median, self.sum, self.mean]
+        except ArithmeticError as e:
+            print(f"Error occurred while analizing data: {e}")
+            return []
+
