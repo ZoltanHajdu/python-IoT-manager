@@ -9,11 +9,7 @@ class DataProcessor:
         self.mean = 0
         self.sum = 0
         self.sensor = sensor.Sensor(sensor_name)
-        self.sensor_data = []
 
-    def print_sensor_data(self):
-        for s in self.sensor_data:
-            print("")
 
     def print_analysis_result(self):
         print("Data analysis finished\n")
@@ -26,9 +22,8 @@ class DataProcessor:
             self.sensor_data.append(self.sensor.get_sensor_data())
             x = x + 1
 
-    def get_analyzed_sensor_data(self):
-        self.median = statistics.median([x[2] for x in self.sensor_data])
-        self.sum = sum([x[2] for x in self.sensor_data])
-        self.mean = statistics.mean([x[2] for x in self.sensor_data])
-        s = "Median: {median}, Sum: {sum}, Mean: {mean}".format(median=self.median, sum=self.sum, mean=self.mean)
-        return s
+    def analyze_sensor_data(self, raw_data):
+        self.median = statistics.median([x[2] for x in raw_data])
+        self.sum = sum([x[2] for x in raw_data])
+        self.mean = statistics.mean([x[2] for x in raw_data])
+        return [self.median, self.sum, self.mean]
