@@ -25,4 +25,5 @@ class Sensor:
         self.data2 = round(random.SystemRandom().uniform(self.lower_bound, self.upper_bound), self.round)
 
     def get_sensor_data(self):
+        self.update_sensor_data()
         return [self.name, self.date, self.data1, self.data2]
